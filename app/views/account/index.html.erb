@@ -1,0 +1,9 @@
+<h1>Account</h1>
+
+Hi <%= current_user.email %>!
+
+<%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
+
+<p>Transaction History</p>
+<p>Listings</p>
+<p>Active bid</p>
