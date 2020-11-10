@@ -1,6 +1,6 @@
 <h1>Account</h1>
 
-Hi <%= current_user.email %>!
+Hi <%= current_user.first_name %>!
 
 <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
 <%= link_to "Edit Account", edit_user_registration_path %>
