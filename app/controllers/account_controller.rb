@@ -1,8 +1,8 @@
 class AccountController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :index
   
   def  index
-    if user_signed_in?
-    end
+    @listings = Listing.all
   end
 end

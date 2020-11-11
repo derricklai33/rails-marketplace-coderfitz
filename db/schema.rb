@@ -10,17 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_015629) do
+ActiveRecord::Schema.define(version: 2020_11_11_082316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "apparel_sizes", force: :cascade do |t|
+    t.integer "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "apparels", force: :cascade do |t|
+    t.string "title"
+    t.string "brand"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "listings", force: :cascade do |t|
     t.float "price"
-    t.boolean "sold"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.string "title"
+    t.boolean "sold", default: false
+    t.integer "category"
+    t.integer "size"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -32,6 +48,19 @@ ActiveRecord::Schema.define(version: 2020_11_10_015629) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "listing_id", null: false
     t.index ["listing_id"], name: "index_locations_on_listing_id"
+  end
+
+  create_table "shoe_sizes", force: :cascade do |t|
+    t.integer "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sneakers", force: :cascade do |t|
+    t.string "title"
+    t.string "brand"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
