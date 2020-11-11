@@ -51,3 +51,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Devise gem
 gem 'devise'
+
+# REST-client gem
+gem 'rest-client', '~> 2.1'
