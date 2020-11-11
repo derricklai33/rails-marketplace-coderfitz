@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "/account", to: 'account#index', as: 'account' 
   resources :sneakers
   resources :apparels
+  resources :listings
 end
