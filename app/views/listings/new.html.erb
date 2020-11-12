@@ -1,0 +1,39 @@
+<h1>New Listing</h1>
+<%= form_with model: @listing, local: true do |f| %>
+  <div>
+    <%= f.radio_button(:category, "apparel", class: "category") %>
+    <%= f.label(:category, "Apparel") %>
+    <%= f.radio_button(:category, "sneaker", class: "category") %>
+    <%= f.label(:category, "Sneaker") %>
+  </div>
+  <div class="apparel-div">  
+     <%= f.label :title %>
+    <%= f.collection_select :title, Apparel.all, :title, :title %> <br>
+    <%= f.label :size %>
+    <%= f.collection_select :size, ApparelSize.all, :size, :size %>
+  </div>
+  <div class="sneaker-div">  
+    <%= f.label :title %>
+    <%= f.collection_select :title, Sneaker.all, :title, :title %> <br>
+    <%= f.label :size %>
+    <%= f.collection_select :size, ShoeSize.all, :size, :size %>
+  </div>
+  <div>  
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+  <div>  
+     <%= f.fields_for :location do |a| %>
+     <%= a.label :city %>
+     <%= a.text_field :city %>
+     <%= a.label :state %>
+     <%= a.text_field :state %>
+     <%= a.label :country %>
+     <%= a.text_field :country %>
+     <% end %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<%# Javascript for displaying different form items when different buttons are clicked %>
+<%= javascript_pack_tag "listing_form" %>
