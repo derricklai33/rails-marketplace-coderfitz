@@ -1,0 +1,37 @@
+<h1>New Listing</h1>
+<%= form_with model: @listing, local: true do |f| %>
+  <div>
+    <%= f.radio_button(:category, "apparel", class: "category") %>
+    <%= f.label(:category, "Apparel") %>
+    <%= f.radio_button(:category, "sneaker", class: "category") %>
+    <%= f.label(:category, "Sneaker") %>
+  </div>
+  <div class="apparel-div">  
+  <%# Placeholder for now %>
+  </div>
+  <div class="sneaker-div">  
+  <%# Placeholder for now   %>
+  </div>
+  <div>  
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+  <div>  
+     <%= f.fields_for :location do |a| %>
+     <%= a.label :city %>
+     <%= a.text_field :city %>
+     <%= a.label :state %>
+     <%= a.text_field :state %>
+     <%= a.label :country %>
+     <%= a.text_field :country %>
+     <% end %>
+  </div>
+  <div>
+    <%= f.label :images %>
+    <%= f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<%# Javascript for displaying different form items when different buttons are clicked %>
+<%= javascript_pack_tag "listing_form" %>
