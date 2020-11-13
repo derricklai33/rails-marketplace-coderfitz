@@ -7,10 +7,10 @@
     <%= f.label(:category, "Sneaker") %>
   </div>
   <div class="apparel-div">  
-  
+  <%# Placeholder for now %>
   </div>
   <div class="sneaker-div">  
-    
+  <%# Placeholder for now   %>
   </div>
   <div>  
     <%= f.label :price %>
@@ -25,6 +25,10 @@
      <%= a.label :country %>
      <%= a.text_field :country %>
      <% end %>
+  </div>
+  <div>
+    <%= f.label :images %>
+    <%= f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true %>
   </div>
   <%= f.submit %>
 <% end %>

@@ -1,6 +1,5 @@
 <h1>Edit Listing</h1>
 <%= form_with model: @listing, local: true do |f| %>
-
   <div>  
     <%= f.label :price %>
     <%= f.number_field :price %>
@@ -14,6 +13,10 @@
      <%= a.label :country %>
      <%= a.text_field :country %>
      <% end %>
+  </div>
+  <div>
+    <%= f.label :images %>
+    <%= f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true %>
   </div>
   <%= f.submit %>
 <% end %>
