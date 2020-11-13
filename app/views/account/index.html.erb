@@ -10,6 +10,11 @@ Hi <%= current_user.first_name %>!
 <p>Transaction History</p>
 <p>Listings</p>
 <% @listings.each do |l|%>
+  <% if l.images.attached? %>
+    <% l.images.each do |image| %>
+      <%= image_tag image %>
+    <% end %>
+  <% end %>
   <%= l.title %> <br>
   <%= l.price %> <br>
   <%= l.sold %> <br>
