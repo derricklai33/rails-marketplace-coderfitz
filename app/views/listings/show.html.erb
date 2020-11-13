@@ -1,0 +1,10 @@
+<h1><%= @listing.title %></h1>
+
+<% @listing.images.each do |image| %>
+  <%= image_tag image %> <br>
+<% end %>
+
+<%= @listing.price %> <br>
+<%= @listing.size %> <br>
+<%= @listing.category %> <br>
+<%= link_to "Buy", bought_path(@listing.id) unless @listing.user_id == current_user.id %>
