@@ -1,1 +1,13 @@
 <h1>Sneakers<h1>
+
+<ul>
+  <% @sneaker.each do |s| %>
+    <% s.images.each do |image| %>
+        <%= image_tag image %> <br>
+    <% end %>
+    <li>Product: <%= s.title %></li>
+    <li>Price: <%= s.price %></li>
+    <li>Seller: <%= s.user.first_name %> </li>
+    <%= link_to "See More", listing_path(s.id) %>
+  <% end %>
+</ul>
