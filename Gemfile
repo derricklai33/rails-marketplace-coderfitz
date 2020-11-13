@@ -54,3 +54,4 @@ gem 'devise'
 
 # REST-client gem
 gem 'rest-client', '~> 2.1'
+gem "aws-sdk-s3", "~> 1.84"
