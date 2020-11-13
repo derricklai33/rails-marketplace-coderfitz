@@ -1,5 +1,8 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_params, except: %i[new create]
+
+  def show; end
 
   def new
     @listing = Listing.new
@@ -13,12 +16,9 @@ class ListingsController < ApplicationController
     redirect_to account_path
   end
 
-  def edit
-    @listing = Listing.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @listing = Listing.find(params[:id])
     if @listing.update(listing_params)
       redirect_to account_path
     else
@@ -26,8 +26,15 @@ class ListingsController < ApplicationController
     end
   end
 
+  # Controller action to set listing to "inactive" but does not delete from the database
+  def bought
+    @listing.product_sold
+    @listing.save
+    puts @listing
+    redirect_to account_path
+  end
+
   def destroy
-    @listing = Listing.find(params[:id])
     # Must delete location dependant listing gets deleted
     @listing.location.destroy
     @listing.destroy
@@ -36,7 +43,11 @@ class ListingsController < ApplicationController
 
   private
 
+  def set_params
+    @listing = Listing.find(params[:id])
+  end
+
   def listing_params
-    params.require(:listing).permit(:title, :price, :sold, :category, :size, images: [], location_attributes: [:id, :city, :state, :country])
+    params.require(:listing).permit(:title, :price, :sold, :category, :size, images: [], location_attributes: %i[id city state country])
   end
 end
