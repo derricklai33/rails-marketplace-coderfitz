@@ -57,3 +57,5 @@ gem 'rest-client', '~> 2.1'
 
 # AWS gem
 gem "aws-sdk-s3", require: false
+
+gem "stripe", "~> 5.28"
