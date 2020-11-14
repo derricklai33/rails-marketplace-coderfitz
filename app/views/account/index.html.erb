@@ -1,26 +1,30 @@
 <h1>Account</h1>
 
-Hi <%= current_user.first_name %>!
+Hi <%= current_user.first_name %>! <br>
 
-<%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
-<%= link_to "Edit Account", edit_user_registration_path %>
-<%= link_to "Sell", new_listing_path %>
+<%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %> <br>
+<%= link_to "Edit Account", edit_user_registration_path %> <br>
+<%= link_to "Sell", new_listing_path %> <br>
 
 
 <p>Transaction History</p>
+ <% @orders.each do |o| %> 
+   <%= image_tag o.listing.images.first %> 
+   <p>Product: <%= o.listing.title %></p> 
+   <p>Price: <%= o.listing.price %></p> 
+   <p>Size: <%= o.listing.size %></p> 
+   <p>Category: <%= o.listing.category.capitalize %></p> 
+ <% end %> 
+
 <p>Listings</p>
 <% @listings.each do |l|%>
-  <% if l.images.attached? %>
-    <% l.images.each do |image| %>
-      <%= image_tag image %>
-    <% end %>
-  <% end %>
-  <%= l.title %> <br>
-  <%= l.price %> <br>
-  <%= l.sold %> <br>
-  <%= l.size %> <br>
-  <%= l.category %> <br>
+  <%= image_tag l.images.first if l.images.attached? %> 
+  <p>Product: <%= l.title %></p> 
+  <p>Price: <%= l.price %></p> 
+  <p>Size: <%= l.size %></p> 
+  <p>Category: <%= l.category.capitalize %></p> 
   <%= link_to "Edit", edit_listing_path(l) %>
   <%= link_to "Delete", listing_path(l.id), method: 'delete' %> <br>
-<% end %>
+<% end %> 
+
 <p>Active bid</p>

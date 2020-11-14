@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
   has_one :location
+  has_many :order
   has_many_attached :images
   accepts_nested_attributes_for :location
   enum category: { apparel: 0, sneaker: 1 }

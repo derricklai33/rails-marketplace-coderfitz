@@ -30,7 +30,7 @@ class ListingsController < ApplicationController
   def bought
     @listing.product_sold
     @listing.save
-    puts @listing
+    Order.create(user_id: current_user.id, listing_id: @listing.id)
     redirect_to account_path
   end
 
