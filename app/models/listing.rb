@@ -10,4 +10,8 @@ class Listing < ApplicationRecord
   def product_sold
     self.sold = true
   end
+
+  def stripe_price
+    self.price.to_i * 100
+  end
 end
