@@ -5,6 +5,5 @@ Rails.application.routes.draw do
   resources :apparels, only: [:index]
   resources :listings
   get "/account", to: 'account#index', as: 'account' 
-  get '/success/:id', to: 'listings#bought', as: 'bought'
   get "payments/success", to: "payments#success"
 end

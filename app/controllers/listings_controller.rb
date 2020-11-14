@@ -49,14 +49,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  # Controller action to set listing to "inactive" but does not delete from the database
-  def bought
-    @listing.product_sold
-    @listing.save
-    Order.create(user_id: current_user.id, listing_id: @listing.id)
-    redirect_to account_path
-  end
-
   def destroy
     # Must delete location dependant listing gets deleted
     @listing.location.destroy
