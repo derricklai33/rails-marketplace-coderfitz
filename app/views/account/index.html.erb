@@ -9,7 +9,7 @@ Hi <%= current_user.first_name %>! <br>
 
 <p>Transaction History</p>
  <% @orders.each do |o| %> 
-   <%= image_tag o.listing.images.first %> 
+   <%= image_tag o.listing.images.first if o.listing.images.attached? %> 
    <p>Product: <%= o.listing.title %></p> 
    <p>Price: <%= o.listing.price %></p> 
    <p>Size: <%= o.listing.size %></p> 
