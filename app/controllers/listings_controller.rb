@@ -2,7 +2,30 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_params, except: %i[new create]
 
-  def show; end
+  def show
+    # Stripe payment
+    if user_signed_in?
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        customer_email: current_user.email,
+        line_items: [{
+          name: @listing.title,
+          amount: @listing.stripe_price,
+          currency: 'aud',
+          quantity: 1,
+        }],
+        payment_intent_data: {
+          metadata: {
+            listing_id: @listing.id,
+            user_id: current_user.id
+          }
+        },
+        success_url: "#{root_url}payments/success?listingId=#{@listing.id}",
+        cancel_url: "#{root_url}"
+      )
+      @session_id = session.id
+    end
+  end
 
   def new
     @listing = Listing.new
