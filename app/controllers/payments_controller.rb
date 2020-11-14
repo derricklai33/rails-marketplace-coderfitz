@@ -3,6 +3,9 @@ class PaymentsController < ApplicationController
 
   def success
     @listing = Listing.find(params[:listingId])
+    @listing.product_sold
+    @listing.save
+    Order.create(user_id: current_user.id, listing_id: @listing.id)
   end
 
   def webhook
