@@ -71,7 +71,7 @@ end
 
 # Generate Apparel sizes
 puts "Generating apparel sizes...."
-apparel_size = (0..6)
+apparel_size = (9..15)
 apparel_size.each do |s|
   ApparelSize.create(size: s) 
 end
