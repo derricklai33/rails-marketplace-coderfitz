@@ -3,6 +3,14 @@ class ApparelsController < ApplicationController
 
   # Shows only apparels that are listed as unsold
   def index
-    @apparel = Listing.where(category: 0, sold: 0)
+    if params[:search].present?
+      @apparel = Listing.apparel_search_by(search_params)
+    else
+      @apparel = Listing.where(category: 0, sold: 0)
+    end
+  end
+
+  def search_params
+    params.require(:search).permit(:title, :size)
   end
 end

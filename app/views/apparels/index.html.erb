@@ -1,5 +1,15 @@
 <h1>Apparel<h1>
 
+<%# Search bar/form %>
+<%= form_with(scope: :search, url: apparels_path, method: 'get', local: true) do |search| %>
+  <%= search.label "Product" %>
+  <%= search.text_field :title, placeholder: "Search by product or brand" %>
+
+  <%= search.label :size %>
+  <%= search.collection_select :size, ApparelSize.all, :size, :size, { :include_blank => "Select" } %>
+  
+  <%= search.submit 'Search' %>
+<% end %>
 <ul>
   <% @apparel.each do |a| %>
     <% a.images.each do |image| %>
