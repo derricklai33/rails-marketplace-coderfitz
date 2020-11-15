@@ -59,3 +59,5 @@ gem 'rest-client', '~> 2.1'
 gem "aws-sdk-s3", require: false
 
 gem "stripe", "~> 5.28"
+
+gem "geocoder", "~> 1.6"

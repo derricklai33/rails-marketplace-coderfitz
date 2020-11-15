@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[show]
   before_action :set_params, except: %i[new create]
 
   def show
@@ -24,6 +24,11 @@ class ListingsController < ApplicationController
         cancel_url: "#{root_url}"
       )
       @session_id = session.id
+    end
+
+    @venue = @listing.location
+    if params[:type] == "json"
+      render json: {data: [@venue.latitude, @venue.longitude], center: [@venue.latitude, @venue.longitude]}
     end
   end
 
