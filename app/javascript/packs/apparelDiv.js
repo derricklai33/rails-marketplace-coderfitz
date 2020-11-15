@@ -96,6 +96,11 @@ const apparelDiv = `
     <option value="XL">XL</option>
     <option value="XXL">XXL</option>
   </select>
+  <label for="listing_brand">Brand</label>
+  <select name="listing[brand]" id="listing_brand">
+    <option value="Supreme">Supreme</option>
+    <option value="FEAR_OF_GOD">FEAR OF GOD</option>
+  </select>
 </div>
 `;
 
