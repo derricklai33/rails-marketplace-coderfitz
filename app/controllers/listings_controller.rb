@@ -63,6 +63,6 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:title, :price, :sold, :category, :size, images: [], location_attributes: %i[id city state country])
+    params.require(:listing).permit(:title, :price, :sold, :category, :size, :brand, images: [], location_attributes: %i[id city state country])
   end
 end

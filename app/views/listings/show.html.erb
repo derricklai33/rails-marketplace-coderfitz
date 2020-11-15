@@ -4,9 +4,11 @@
   <%= image_tag image %> <br>
 <% end %>
 
-<%= @listing.price %> <br>
-<%= @listing.size %> <br>
-<%= @listing.category %> <br>
+<p>Product: <%= @listing.title %></p>
+<p>Brand: <%= @listing.brand %> </p> 
+<p>Price: <%= @listing.price %></p> 
+<p>Size: <%= @listing.size %></p> 
+<p>Category: <%= @listing.category.capitalize %></p>
 
 <% if user_signed_in? && @listing.user_id != current_user.id %>
   <button data-stripe='payment'>Buy</button>
