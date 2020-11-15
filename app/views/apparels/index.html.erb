@@ -1,5 +1,11 @@
 <h1>Apparel<h1>
 
+<%# Search bar/form %>
+<%= form_with(scope: :search, url: apparels_path, method: 'get', local: true) do |search| %>
+  <%= search.label :title %>
+  <%= search.text_field :title %>
+  <%= search.submit 'Search' %>
+<% end %>
 <ul>
   <% @apparel.each do |a| %>
     <% a.images.each do |image| %>
