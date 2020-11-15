@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_11_15_031128) do
     t.boolean "sold", default: false
     t.integer "category"
     t.integer "size"
-    t.string "brand"
+    t.integer "brand"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
