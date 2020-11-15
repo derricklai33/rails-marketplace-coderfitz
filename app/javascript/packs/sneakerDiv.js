@@ -191,6 +191,11 @@ const sneakerDiv = `
     <option value="US12">US12</option>
     <option value="US13">US13</option>
   </select>
+  <label for="listing_brand">Brand</label>
+  <select name="listing[brand]" id="listing_brand">
+    <option value="Jordan">Jordan</option>
+    <option value="Adidas">Adidas</option>
+  </select>
 </div>
 `;
 
