@@ -2,8 +2,12 @@
 
 <%# Search bar/form %>
 <%= form_with(scope: :search, url: sneakers_path, method: 'get', local: true) do |search| %>
-  <%= search.label :title %>
-  <%= search.text_field :title %>
+  <%= search.label "Product" %>
+  <%= search.text_field :title, placeholder: "Search by product or brand" %>
+
+  <%= search.label :size %>
+  <%= search.collection_select :size, ShoeSize.all, :size, :size, { :include_blank => "Select" } %>
+  
   <%= search.submit 'Search' %>
 <% end %>
 

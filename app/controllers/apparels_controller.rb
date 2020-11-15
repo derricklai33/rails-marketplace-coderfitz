@@ -4,10 +4,13 @@ class ApparelsController < ApplicationController
   # Shows only apparels that are listed as unsold
   def index
     if params[:search].present?
-      # Listing where only active and are apparels can be searched
-      @apparel = Listing.where(category: 0,sold:0) && Listing.where('title ILIKE ?', "%#{params[:search][:title]}%")
+      @apparel = Listing.apparel_search_by(search_params)
     else
       @apparel = Listing.where(category: 0, sold: 0)
     end
+  end
+
+  def search_params
+    params.require(:search).permit(:title, :size)
   end
 end

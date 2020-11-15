@@ -1,4 +1,6 @@
 class Listing < ApplicationRecord
+  include Searchable
+
   belongs_to :user
   has_one :location
   has_many :order
@@ -8,6 +10,9 @@ class Listing < ApplicationRecord
   enum size: { US5: 0, US6: 1, US7: 2, US8: 3, US9: 4, US10: 5, US11: 6, US12: 7, US13: 8, XXS: 9, XS: 10, S: 11, M: 12, L: 13, XL: 14, XXL: 15 }
   enum brand: { Jordan:0, Adidas: 1, Supreme: 2, FEAR_OF_GOD: 3}
 
+  scope :search_by_title, -> (title) { where('title ILIKE?', "%#{title}%") }
+  scope :search_by_size, -> (size) { Listing.where(size: size) }
+  
   def product_sold
     self.sold = true
   end
