@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :listings
   get "/account", to: 'account#index', as: 'account' 
   get "payments/success", to: "payments#success"
+  get "users/:id", to: "users#show", as: 'user'
 end
