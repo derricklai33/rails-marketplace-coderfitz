@@ -5,7 +5,8 @@ class PaymentsController < ApplicationController
     @listing = Listing.find(params[:listingId])
     @listing.product_sold
     @listing.save
-    Order.create(user_id: current_user.id, listing_id: @listing.id)
+    @order = Order.create(user_id: current_user.id, listing_id: @listing.id)
+    ListingMailer.send_order_mail(current_user, @order).deliver
   end
 
   def webhook
