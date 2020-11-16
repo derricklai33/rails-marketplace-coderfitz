@@ -1,6 +1,4 @@
 class ListingMailer < ApplicationMailer
-  default from: 'ahlai33@gmail.com'
-
   def send_listing_mail(user, listing)
     @user = user
     @listing = listing
