@@ -41,6 +41,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user = current_user
     @listing.save
+    ListingMailer.send_listing_mail(current_user).deliver
     redirect_to account_path
   end
 
