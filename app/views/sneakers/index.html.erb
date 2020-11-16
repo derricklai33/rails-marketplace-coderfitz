@@ -11,6 +11,11 @@
   <%= search.submit 'Search' %>
 <% end %>
 
+<%= form_with(url: sneakers_path, method: 'get', local:true) do |sort| %>
+  <%= sort.select :order, ["Price: Low to High", "Price: High to Low", "Product: A to Z", "Product: Z to A"], { :include_blank => "Sort" } %>
+  <%= sort.submit "Sort" %>
+<% end %>
+
 <ul>
   <% @sneaker.each do |s| %>
     <% s.images.each do |image| %>
@@ -18,7 +23,7 @@
     <% end %>
     <li>Product: <%= s.title %></li>
     <li>Price: <%= s.price %></li>
-    <li>Seller: <%= s.user.first_name %> </li>
-    <%= link_to "See More", listing_path(s.id) %>
+    <li>Seller: <%= link_to "#{s.user.full_name}", user_path(s.user.id) %> </li>
+    <%= link_to "See More", listing_path(s.id) %> <br>
   <% end %>
 </ul>
