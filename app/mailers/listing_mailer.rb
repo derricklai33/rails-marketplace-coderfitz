@@ -1,6 +1,8 @@
 class ListingMailer < ApplicationMailer
-  def send_listing_mail
-    mail( :to => @user.email,
-    :subject => 'Thanks for signing up for our amazing app' )
+  default from: 'ahlai33@gmail.com'
+
+  def send_listing_mail(listing)
+    @listing = listing
+    mail( :to => @listing.user.email, :subject => "Thanks for listing #{@listing.title}" )
   end
 end
