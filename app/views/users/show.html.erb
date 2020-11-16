@@ -1,0 +1,28 @@
+<div>
+  <%= image_tag image_for(@user), height: '200px' %>
+</div>
+
+<div>
+  <ul>
+    <li>
+      <p>Name: <%= @user.full_name %></p>
+    </li>
+    <li>
+      <p>Email: <%= @user.email %></p>
+    </li>
+    <li>
+      <p>Number: <%= @user.contact_number %></p>
+    </li>
+  </ul>
+</div>
+
+<h2>Active Listings</h2>
+<div>
+  <% @user_listings.each do |listing| %>
+    <%= image_tag listing.images.first %> <br>
+    <p>Product: <%= listing.title %></p>
+    <p>Price: <%= listing.price %></p>
+    <p>Size: <%= listing.size %></p>
+    <%= link_to "Show", listing_path(listing.id) %> <br>
+  <% end %>
+</div>
