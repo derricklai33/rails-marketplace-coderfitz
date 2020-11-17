@@ -1,6 +1,7 @@
 const sneakerDiv = `
 <div class="sneaker-select">
   <label for="listing_title">Title</label>
+  <br />
   <select name="listing[title]" id="listing_title">
     <option value="adidas Yeezy 700 Mauve">adidas Yeezy 700 Mauve</option>
     <option value="adidas Yeezy 500 Salt">adidas Yeezy 500 Salt</option>
@@ -180,6 +181,7 @@ const sneakerDiv = `
   </select>
   <br />
   <label for="listing_size">Size</label>
+  <br />
   <select name="listing[size]" id="listing_size">
     <option value="US5">US5</option>
     <option value="US6">US6</option>
@@ -191,7 +193,9 @@ const sneakerDiv = `
     <option value="US12">US12</option>
     <option value="US13">US13</option>
   </select>
+  <br />
   <label for="listing_brand">Brand</label>
+  <br />
   <select name="listing[brand]" id="listing_brand">
     <option value="Jordan">Jordan</option>
     <option value="Adidas">Adidas</option>
