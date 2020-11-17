@@ -1,6 +1,10 @@
-<h1>Landing page</h1>
-
-<div class="hero-image-div">
-  <%= link_to (image_tag "hero-image-sneakers", alt: "hero-image-sneakers", class: "hero-image-landing-page"), sneakers_path %>
-  <%= link_to (image_tag "hero-image-apparels", alt: "hero-image-apparels", class: "hero-image-landing-page"), apparels_path %>
+<div class="row">
+  <div class="col">
+    <h3 class ="inline-text">Shop Sneaker</h3>
+    <%= link_to (image_tag "hero-image-sneakers", alt: "hero-image-sneakers",  class: 'img-fluid', width: '100%'), sneakers_path %>
+  </div>
+  <div class="col">
+    <h3 class ="inline-text">Shop Apparel</h3>
+    <%= link_to (image_tag "hero-image-apparels", alt: "hero-image-apparels",  class: 'img-fluid', width: '100%'), apparels_path %>
+  </div>
 </div>

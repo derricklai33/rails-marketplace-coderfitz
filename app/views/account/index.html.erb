@@ -1,32 +1,51 @@
-<h1>Account</h1>
+<div class="header-for-page-div">
+  <h1 class="text-center">Account<h1>
+</div>
 
-Hi <%= current_user.first_name %>! <br>
+<h2 class="text-center">Hi <%= current_user.first_name %>!</h2>
+<div class="text-center">
+  <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %> <br>
+  <%= link_to "Edit Account", edit_user_registration_path %> <br>
+  <%= link_to "Sell", new_listing_path %> <br>
+</div>
 
-<%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %> <br>
-<%= link_to "Edit Account", edit_user_registration_path %> <br>
-<%= link_to "Sell", new_listing_path %> <br>
+<div class="row">
+  <div class="col-6">
+    <h2 class="text-center">Transaction History</h2>
+    <div class="overflow-auto" style="height: 65vh;">
+      <% @orders.each do |o| %> 
+      <div class="card text-white bg-dark mb-3" style="width: 80%; margin: 0 auto;">
+        <%= image_tag (o.listing.images.first if o.listing.images.attached?), class: "card-img-top", style: "height: 30vh;" %>
+        <div class="card-body">
+            <p>Product: <%= o.listing.title %></p>
+            <p>Brand: <%= o.listing.brand %> </p> 
+            <p>Price: $<%= o.listing.price %></p> 
+            <p>Size: <%= o.listing.size %></p> 
+            <p>Category: <%= o.listing.category.capitalize %></p>
+            <p>Sold by: <%= link_to "#{o.listing.user.full_name}", user_path(o.listing.user.id) %><p> 
+        </div>
+      </div>
+    <% end %> 
+    </div>
+  </div>
 
-
-<p>Transaction History</p>
- <% @orders.each do |o| %> 
-   <%= image_tag o.listing.images.first if o.listing.images.attached? %> 
-   <p>Product: <%= o.listing.title %></p>
-   <p>Brand: <%= o.listing.brand %> </p> 
-   <p>Price: <%= o.listing.price %></p> 
-   <p>Size: <%= o.listing.size %></p> 
-   <p>Category: <%= o.listing.category.capitalize %></p> 
- <% end %> 
-
-<p>Listings</p>
-<% @listings.each do |l|%>
-  <%= image_tag l.images.first if l.images.attached? %> 
-  <p>Product: <%= l.title %></p>
-  <p>Brand: <%= l.brand %> </p> 
-  <p>Price: <%= l.price %></p> 
-  <p>Size: <%= l.size %></p> 
-  <p>Category: <%= l.category.capitalize %></p> 
-  <%= link_to "Edit", edit_listing_path(l) %>
-  <%= link_to "Delete", listing_path(l.id), method: 'delete' %> <br>
-<% end %> 
-
-<p>Active bid</p>
+  <div class="col-6">
+    <h2 class="text-center">Active Listings</h2>
+    <div class="overflow-auto" style="height: 65vh;">
+      <% @listings.each do |l|%>
+        <div class="card text-white bg-dark mb-3" style="width: 80%; margin: 0 auto;">
+          <%= image_tag (l.images.first if l.images.attached?), class: "card-img-top", style: "height: 30vh;" %>
+          <div class="card-body"> 
+            <p>Product: <%= l.title %></p>
+            <p>Brand: <%= l.brand %> </p> 
+            <p>Price: $<%= l.price %></p> 
+            <p>Size: <%= l.size %></p> 
+            <p>Category: <%= l.category.capitalize %></p> 
+            <%= link_to "Edit", edit_listing_path(l),class: "btn btn-primary" %>
+            <%= link_to "Delete", listing_path(l.id), method: 'delete', class: "btn btn-danger" %>
+          </div>
+        </div>
+      <% end %> 
+    </div>
+  </div>
+</div>

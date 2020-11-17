@@ -1,6 +1,7 @@
 const apparelDiv = `
 <div class="apparel-select">
   <label for="listing_title">Title</label>
+  <br />
   <select name="listing[title]" id="listing_title">
     <option value="Supreme Box Logo L/S Tee White">
       Supreme Box Logo L/S Tee White
@@ -87,6 +88,7 @@ const apparelDiv = `
   </select>
   <br />
   <label for="listing_size">Size</label>
+  <br />
   <select name="listing[size]" id="listing_size">
     <option value="XXS">XXS</option>
     <option value="XS">XS</option>
@@ -96,7 +98,9 @@ const apparelDiv = `
     <option value="XL">XL</option>
     <option value="XXL">XXL</option>
   </select>
+  <br />
   <label for="listing_brand">Brand</label>
+  <br />
   <select name="listing[brand]" id="listing_brand">
     <option value="Supreme">Supreme</option>
     <option value="FEAR_OF_GOD">FEAR OF GOD</option>

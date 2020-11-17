@@ -1,37 +1,47 @@
-<h1>New Listing</h1>
-<%= form_with model: @listing, local: true do |f| %>
-  <div>
-    <%= f.radio_button(:category, "apparel", class: "category") %>
-    <%= f.label(:category, "Apparel") %>
-    <%= f.radio_button(:category, "sneaker", class: "category") %>
-    <%= f.label(:category, "Sneaker") %>
-  </div>
-  <div class="apparel-div">  
-  <%# Placeholder for now %>
-  </div>
-  <div class="sneaker-div">  
-  <%# Placeholder for now   %>
-  </div>
-  <div>  
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-  <div>  
-     <%= f.fields_for :location do |a| %>
-     <%= a.label :city %>
-     <%= a.text_field :city %>
-     <%= a.label :state %>
-     <%= a.text_field :state %>
-     <%= a.label :country %>
-     <%= a.text_field :country %>
-     <% end %>
-  </div>
-  <div>
-    <%= f.label :images %>
-    <%= f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true %>
-  </div>
-  <%= f.submit %>
-<% end %>
+<div class='header-for-page-div'>
+  <h1 class='text-center'>New Listing</h1>
+</div>
 
-<%# Javascript for displaying different form items when different buttons are clicked %>
-<%= javascript_pack_tag "listing_form" %>
+<div class='row'>
+  <div class='col-5'>
+  <%# Placeholder to push form to the right %>
+  </div>
+  <div class='col-7'>
+    <%= form_with model: @listing, local: true do |f| %>
+      <div>
+        <%= f.radio_button(:category, "apparel", class: "category") %>
+        <%= f.label(:category, "Apparel") %>
+        <%= f.radio_button(:category, "sneaker", class: "category") %>
+        <%= f.label(:category, "Sneaker") %>
+      </div>
+      <div class="apparel-div">  
+      <%# Used with javascript to display dropdown menu options %>
+      </div>
+      <div class="sneaker-div">  
+      <%# Used with javascript to display dropdown menu options %>
+      </div>
+      <div>  
+        <%= f.label :price %> <br>
+        <%= f.number_field :price %> <br>
+      </div>
+      <div>  
+        <%= f.fields_for :location do |a| %>
+        <%= a.label :city %> <br>
+        <%= a.text_field :city %> <br>
+        <%= a.label :state %> <br>
+        <%= a.text_field :state %> <br>
+        <%= a.label :country %> <br>
+        <%= a.text_field :country %> <br>
+        <% end %>
+      </div>
+      <div> <br>
+        <%= f.label :images %> <br>
+        <%= f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true %>
+      </div> <br>
+      <%= f.submit "New Listing", class: 'btn btn-dark' %>
+    <% end %>
+  </div>
+
+    <%# Javascript for displaying different form items when different buttons are clicked %>
+    <%= javascript_pack_tag "listing_form" %>
+</div>
