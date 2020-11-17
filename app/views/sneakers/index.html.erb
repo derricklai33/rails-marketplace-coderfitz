@@ -1,29 +1,49 @@
-<h1>Sneakers<h1>
+<div class="index-page-div">
+  <h1 class="text-center">Sneaker<h1>
+</div>
 
-<%# Search bar/form %>
-<%= form_with(scope: :search, url: sneakers_path, method: 'get', local: true) do |search| %>
-  <%= search.label "Product" %>
-  <%= search.text_field :title, placeholder: "Search by product or brand" %>
-
-  <%= search.label :size %>
-  <%= search.collection_select :size, ShoeSize.all, :size, :size, { :include_blank => "Select" } %>
+<div class="row">
+  <div class="col-3">
+    <div class="card" style="width: 15rem;">
+      <%# Search bar/form %>
+      <%= form_with(scope: :search, url: sneakers_path, method: 'get', local: true) do |search| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h6>Product: <%= search.text_field :title, placeholder: "Search by product or brand" %></h6>
+          </li>
+          <li class="list-group-item">
+            <h6>Size: <%= search.collection_select :size, ShoeSize.all, :size, :size, :include_blank => "Select" %></h6>
+            <h6><%= search.submit 'Search', class: 'btn btn-dark' %></h6>
+          </li>
+        </ul>
+    </div>
+      <% end %>
+  </div>
   
-  <%= search.submit 'Search' %>
-<% end %>
+  <div class="col-9">
+    <div class="row d-flex flex-row-reverse">
+      <%# Product sorting form %>
+      <%= form_with(url: sneakers_path, method: 'get', local:true) do |sort| %>
+        <%= sort.select :order, ["Price: Low to High", "Price: High to Low", "Product: A to Z", "Product: Z to A"], { :include_blank => "Sort" } %>
+        <%= sort.submit "Sort", class: 'btn btn-dark' %>
+      <% end %>
+    </div>
 
-<%= form_with(url: sneakers_path, method: 'get', local:true) do |sort| %>
-  <%= sort.select :order, ["Price: Low to High", "Price: High to Low", "Product: A to Z", "Product: Z to A"], { :include_blank => "Sort" } %>
-  <%= sort.submit "Sort" %>
-<% end %>
-
-<ul>
-  <% @sneaker.each do |s| %>
-    <% s.images.each do |image| %>
-        <%= image_tag image %> <br>
-    <% end %>
-    <li>Product: <%= s.title %></li>
-    <li>Price: <%= s.price %></li>
-    <li>Seller: <%= link_to "#{s.user.full_name}", user_path(s.user.id) %> </li>
-    <%= link_to "See More", listing_path(s.id) %> <br>
-  <% end %>
-</ul>
+    <%# Product card %>
+    <div class="row d-flex flex-row" style="margin: 20px;">
+      <% @sneaker.each do |s| %>
+        <div class="card bg-dark mb-3 text-center" style="width: 20rem; margin: 30px;">
+          <%= image_tag s.images.first, class: 'card-img-top',height: '300px', width: '300px' %>
+          <div class="card-header">
+            <h5 class="card-title text-white" style="height: 3rem;"><%= s.title%></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="height: 3rem;"><h6>Price: <%= s.price %></h6></li>
+            <li class="list-group-item" style="height: 3rem;"><h6>Size: <%= s.size %></h6></li>
+            <li class="list-group-item" style="height: 4rem;"><h6><%= link_to "See More", listing_path(s.id), class: 'btn btn-dark' %></h6></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
