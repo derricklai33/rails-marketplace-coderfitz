@@ -58,6 +58,11 @@ gem 'rest-client', '~> 2.1'
 # AWS gem
 gem "aws-sdk-s3", require: false
 
+# Stripe gem
 gem "stripe", "~> 5.28"
 
+# Geocoder gem
 gem "geocoder", "~> 1.6"
+
+# Bullet gem
+gem 'bullet', group: 'development'
