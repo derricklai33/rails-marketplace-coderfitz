@@ -1,12 +1,20 @@
-<nav class="navbar">
-  <div class="left-bar">
-    <%= link_to "Home", root_path %>
-    <%= link_to "Sneakers", sneakers_path %>
-    <%= link_to "Apparels", apparels_path %>
-  </div>
-  <div class="right-bar">
-    <%= link_to "Account", account_path %>
-    <%= link_to "Search" %>
-    <%= link_to "Cart" %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= link_to (image_tag 'navbar-logo', height: '40', width: '40'), root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to 'Sneaker', sneakers_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Apparel', apparels_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Account', account_path, class: 'nav-link' %>
+      </li>
+    </ul>
   </div>
 </nav>
