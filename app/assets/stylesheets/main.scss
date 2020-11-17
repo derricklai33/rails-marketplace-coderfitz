@@ -1,3 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap';
 @import 'global/reset-page';
-@import 'listings/new-listing'
+
+.inline-text {
+  position: absolute;
+  padding: 20px;
+}
