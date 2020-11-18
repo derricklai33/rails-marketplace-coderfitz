@@ -7,7 +7,7 @@
             <%= image_tag @listing.images.first, class: 'd-block w-100' %>
           </div>
         <% @listing.images.each do|image| %>
-        <%# Used .drop(1) to exclude the already displayed first image %>
+          <%# Have to redisplay first image on carousel %>
           <div class="carousel-item">
             <%= image_tag image, class: 'd-block w-100' %>
           </div>

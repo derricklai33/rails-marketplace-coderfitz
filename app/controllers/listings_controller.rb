@@ -40,18 +40,23 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user = current_user
-    @listing.save
-    ListingMailer.send_listing_mail(current_user, @listing).deliver
-    redirect_to account_path
+    if @listing.save
+      ListingMailer.send_listing_mail(current_user, @listing).deliver
+      redirect_to account_path, success: "Product successfully listed!"
+    else
+      flash[:error] = "Product was unsuccessfully listed!"
+      render :new
+    end
   end
 
   def edit; end
 
   def update
     if @listing.update(listing_params)
-      redirect_to account_path
+      redirect_to account_path, success: "Product edited!"
     else
-      render :edit
+      flash[:error] = "Something went wrong, try editing again!"
+      render :edit 
     end
   end
 
@@ -59,7 +64,7 @@ class ListingsController < ApplicationController
     # Must delete location dependant listing gets deleted
     @listing.location.destroy
     @listing.destroy
-    redirect_to account_path
+    redirect_to account_path, notice: "Product deleted!"
   end
 
   private
