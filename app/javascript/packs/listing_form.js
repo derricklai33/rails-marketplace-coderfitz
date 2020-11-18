@@ -4,6 +4,16 @@ const sneaker = document.querySelector(".sneaker-div");
 import { apparelDiv } from './apparelDiv.js'
 import { sneakerDiv } from './sneakerDiv.js'
 
+var count = 0;
+
+function setOne(){
+  count = 1;
+}
+
+function setTwo(){
+  count = 2;
+}
+
 radios.forEach((radio) => {
   radio.addEventListener("click", (e) => {
     if (e.target.value === "apparel") {
@@ -11,13 +21,19 @@ radios.forEach((radio) => {
       if (sneakerSelect) {
         sneakerSelect.parentNode.removeChild(sneakerSelect);
       }
-      apparel.insertAdjacentHTML("afterbegin", apparelDiv);
+      if (count === 2 || count === 0) {
+        apparel.insertAdjacentHTML("afterbegin", apparelDiv);
+      }
+      setOne()
     } else {
       const apparelSelect = document.querySelector(".apparel-select");
       if (apparelSelect) {
         apparelSelect.parentNode.removeChild(apparelSelect);
       }
+      if (count === 1 || count === 0) {
       sneaker.insertAdjacentHTML("afterbegin", sneakerDiv);
+      }
+      setTwo()
     }
   });
 });
