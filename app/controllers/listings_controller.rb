@@ -40,9 +40,12 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user = current_user
-    @listing.save
-    ListingMailer.send_listing_mail(current_user, @listing).deliver
-    redirect_to account_path
+    if @listing.save
+      ListingMailer.send_listing_mail(current_user, @listing).deliver
+      redirect_to account_path
+    else
+      render :new
+    end
   end
 
   def edit; end
