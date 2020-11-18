@@ -1,2 +1,0 @@
-class Apparel < ApplicationRecord
-end

@@ -17,7 +17,8 @@ class Listing < ApplicationRecord
   # Scope for searching
   scope :search_by_title, -> (title) { where('title ILIKE?', "%#{title}%") }
   scope :search_by_size, -> (size) { Listing.where(size: size) }
-  
+  scope :apparel_unsold, -> { where(category: 0, sold: 0)}
+  scope :sneaker_unsold, -> { where(category: 1, sold: 0)}
   # Validations
   # As options are from javascript, they are perdefined and will be present or not only
   validates :title, presence: true

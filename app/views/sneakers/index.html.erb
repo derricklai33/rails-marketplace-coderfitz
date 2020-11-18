@@ -38,7 +38,7 @@
             <h5 class="card-title text-white" style="height: 3rem;"><%= s.title%></h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="height: 3rem;"><h6>Price: <%= s.price %></h6></li>
+            <li class="list-group-item" style="height: 3rem;"><h6>Price: <%= number_to_currency(s.price) %></h6></li>
             <li class="list-group-item" style="height: 3rem;"><h6>Size: <%= s.size %></h6></li>
             <li class="list-group-item" style="height: 4rem;"><h6><%= link_to "See More", listing_path(s.id), class: 'btn btn-dark' %></h6></li>
           </ul>

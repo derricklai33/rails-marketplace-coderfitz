@@ -19,7 +19,7 @@
         <div class="card-body">
             <p>Product: <%= o.listing.title %></p>
             <p>Brand: <%= o.listing.brand %> </p> 
-            <p>Price: $<%= o.listing.price %></p> 
+            <p>Price: <%= number_to_currency(o.listing.price) %></p> 
             <p>Size: <%= o.listing.size %></p> 
             <p>Category: <%= o.listing.category.capitalize %></p>
             <p>Sold by: <%= link_to "#{o.listing.user.full_name}", user_path(o.listing.user.id) %><p> 
@@ -38,7 +38,7 @@
           <div class="card-body"> 
             <p>Product: <%= l.title %></p>
             <p>Brand: <%= l.brand %> </p> 
-            <p>Price: $<%= l.price %></p> 
+            <p>Price: <%= number_to_currency(l.price) %></p> 
             <p>Size: <%= l.size %></p> 
             <p>Category: <%= l.category.capitalize %></p> 
             <%= link_to "Edit", edit_listing_path(l),class: "btn btn-primary" %>

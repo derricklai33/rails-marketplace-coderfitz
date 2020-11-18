@@ -1,2 +1,0 @@
-class Sneaker < ApplicationRecord
-end
