@@ -27,7 +27,7 @@
   <div class="col-6" style="margin: 40px 0;">
     <h1><%= @listing.title %></h1>
     <h4><strong>Brand</strong>: <%= @listing.brand %></h4> 
-    <h4><strong>Price</strong>: $<%= @listing.price %></h4> 
+    <h4><strong>Price</strong>: <%= number_to_currency(@listing.price) %></h4> 
     <h4><strong>Size</strong>: <%= @listing.size %></h4>  
     <h4><strong>Category</strong>: <%= @listing.category.capitalize %></h4> 
     <h4><strong>Seller</strong>: <%= link_to "#{@listing.user.full_name}", user_path(@listing.user.id) %></h4> 
