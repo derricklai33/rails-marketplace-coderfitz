@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_023031) do
+ActiveRecord::Schema.define(version: 2020_11_18_071709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,15 +42,8 @@ ActiveRecord::Schema.define(version: 2020_11_16_023031) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "apparels", force: :cascade do |t|
-    t.string "title"
-    t.string "brand"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "listings", force: :cascade do |t|
-    t.float "price"
+    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
@@ -85,13 +78,6 @@ ActiveRecord::Schema.define(version: 2020_11_16_023031) do
 
   create_table "shoe_sizes", force: :cascade do |t|
     t.integer "size"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "sneakers", force: :cascade do |t|
-    t.string "title"
-    t.string "brand"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
