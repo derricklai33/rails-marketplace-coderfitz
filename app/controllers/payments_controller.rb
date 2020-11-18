@@ -6,8 +6,8 @@ class PaymentsController < ApplicationController
     @listing.product_sold
     @listing.save
     @order = Order.create(user_id: current_user.id, listing_id: @listing.id)
-    OrderMailer.send_order_mail(current_user, @order).deliver 
-    redirect_to root_path, success: "Purchase completed! Check your email for your order summary!"
+    OrderMailer.send_order_mail(current_user, @order).deliver
+    redirect_to root_path, success: 'Purchase completed! Check your email for your order summary!'
   end
 
   # Unable to get webhook to work

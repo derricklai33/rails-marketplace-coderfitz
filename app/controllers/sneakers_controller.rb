@@ -5,21 +5,22 @@ class SneakersController < ApplicationController
   # Sorting by price and title
   def index
     if params[:order].present?
-      if params[:order] == "Price: Low to High"
+      case params[:order]
+      when 'Price: Low to High'
         @sneaker = Listing.order(price: :asc).sneaker_unsold.with_attached_images
         render :index
-      elsif params[:order] == "Price: High to Low"
+      when 'Price: High to Low'
         @sneaker = Listing.order(price: :desc).sneaker_unsold.with_attached_images
         render :index
-      elsif params[:order] == "Product: A to Z"
+      when 'Product: A to Z'
         @sneaker = Listing.order(title: :asc).sneaker_unsold.with_attached_images
         render :index
-      elsif params[:order] == "Product: Z to A"
+      when 'Product: Z to A'
         @sneaker = Listing.order(title: :desc).sneaker_unsold.with_attached_images
         render :index
       end
     end
-    
+
     # Listing where only active and are sneakers can be searched
     if params[:search].present?
       @sneaker = Listing.sneaker_search_by(search_params).with_attached_images
