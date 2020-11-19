@@ -21,6 +21,7 @@ class PaymentsController < ApplicationController
     # Order is then created which shows up in a user's transaction history and run OrderMailer
     @order = Order.create(user_id: user_id, listing_id: listing_id)
     OrderMailer.send_order_mail(user_id, @order).deliver
+    OrderMailer.send_order_mail_user(user_id, @order).deliver
   end
 end
     

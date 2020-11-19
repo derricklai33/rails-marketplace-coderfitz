@@ -1,0 +1,6 @@
+Congratulations  <%= @user.full_name %>, your listing sold!
+Listing details:
+Product: <%= @order.listings.title %>!
+Price: <%= number_to_currency(@order.listings.price) %>!
+Size: <%=  @order.listings.size %>!
+Category: <%=  @order.listings.category %>!

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Congratulations  <%= @user.full_name %>, your listing sold!</h1>
+    <h2>Order details:</h2>
+    <p>Product: <%= @order.listing.title %>!</p>
+    <p>Price: <%= number_to_currency(@order.listing.price) %>!</p>
+    <p>Size: <%=  @order.listing.size %>!</p>
+    <p>Category: <%=  @order.listing.category %>!</p>
+  </body>
+</html>
