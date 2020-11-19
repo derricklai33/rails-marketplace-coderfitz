@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
           name: @listing.title,
           amount: @listing.stripe_price,
           currency: 'aud',
-          quantity: 1,
+          quantity: 1
         }],
         payment_intent_data: {
           metadata: {
@@ -27,8 +27,8 @@ class ListingsController < ApplicationController
     end
 
     @venue = @listing.location
-    if params[:type] == "json"
-      render json: {data: [@venue.latitude, @venue.longitude], center: [@venue.latitude, @venue.longitude]}
+    if params[:type] == 'json'
+      render json: { data: [@venue.latitude, @venue.longitude], center: [@venue.latitude, @venue.longitude] }
     end
   end
 
@@ -42,9 +42,9 @@ class ListingsController < ApplicationController
     @listing.user = current_user
     if @listing.save
       ListingMailer.send_listing_mail(current_user, @listing).deliver
-      redirect_to account_path, success: "Product successfully listed!"
+      redirect_to account_path, success: 'Product successfully listed!'
     else
-      flash[:error] = "Product was unsuccessfully listed!"
+      flash[:error] = 'Product was unsuccessfully listed!'
       render :new
     end
   end
@@ -53,10 +53,10 @@ class ListingsController < ApplicationController
 
   def update
     if @listing.update(listing_params)
-      redirect_to account_path, success: "Product edited!"
+      redirect_to account_path, success: 'Product edited!'
     else
-      flash[:error] = "Something went wrong, try editing again!"
-      render :edit 
+      flash[:error] = 'Something went wrong, try editing again!'
+      render :edit
     end
   end
 
@@ -64,7 +64,7 @@ class ListingsController < ApplicationController
     # Must delete location dependant listing gets deleted
     @listing.location.destroy
     @listing.destroy
-    redirect_to account_path, notice: "Product deleted!"
+    redirect_to account_path, notice: 'Product deleted!'
   end
 
   private

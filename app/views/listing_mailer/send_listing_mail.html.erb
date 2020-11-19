@@ -7,7 +7,7 @@
     <h1>Thanks for the new listing, <%= @user.full_name %>!</h1>
     <p>Thanks for listing: <%= @listing.title %>!</p>
     <p>Product: <%= @listing.title %>!</p>
-    <p>Price: <%= @listing.price %>!</p>
+    <p>Price: <%= number_to_currency(@listing.price) %>!</p>
     <p>Size: <%= @listing.size %>!</p>
     <p>Category: <%= @listing.category %>!</p>
   </body>

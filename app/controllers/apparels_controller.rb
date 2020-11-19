@@ -4,16 +4,17 @@ class ApparelsController < ApplicationController
 
   # Sorting by price and title
   def index
-    if params[:order] == "Price: Low to High"
+    case params[:order]
+    when 'Price: Low to High'
       @apparel = Listing.order(price: :asc).apparel_unsold.with_attached_images
       render :index
-    elsif params[:order] == "Price: High to Low"
+    when 'Price: High to Low'
       @apparel = Listing.order(price: :desc).apparel_unsold.with_attached_images
       render :index
-    elsif params[:order] == "Product: A to Z"
+    when 'Product: A to Z'
       @apparel = Listing.order(title: :asc).apparel_unsold.with_attached_images
       render :index
-    elsif params[:order] == "Product: Z to A"
+    when 'Product: Z to A'
       @apparel = Listing.order(title: :desc).apparel_unsold.with_attached_images
       render :index
     end

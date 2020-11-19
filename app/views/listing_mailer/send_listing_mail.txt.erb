@@ -1,6 +1,6 @@
 Thanks for the new listing, <%= @listing.user.full_name %>!
   Thanks for listing: <%= @listing.title %>!
   Product: <%= @listing.title %>!
-  Price: <%= @listing.price %>!
+  Price: <%= number_to_currency(@listing.price) %>!
   Size: <%= @listing.size %>!
   Category: <%= @listing.category %>!

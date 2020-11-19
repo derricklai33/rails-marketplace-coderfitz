@@ -1,6 +1,6 @@
 Thanks for the purchase, <%= @user.full_name %>!
 Order details:
 Product: <%= @order.listings.title %>!
-Price: <%= @order.listings.price %>!
+Price: <%= number_to_currency(@order.listings.price) %>!
 Size: <%=  @order.listings.size %>!
 Category: <%=  @order.listings.category %>!

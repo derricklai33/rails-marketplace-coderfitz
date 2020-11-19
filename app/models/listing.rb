@@ -12,13 +12,13 @@ class Listing < ApplicationRecord
   # Enums on model attributes
   enum category: { apparel: 0, sneaker: 1 }
   enum size: { US5: 0, US6: 1, US7: 2, US8: 3, US9: 4, US10: 5, US11: 6, US12: 7, US13: 8, XXS: 9, XS: 10, S: 11, M: 12, L: 13, XL: 14, XXL: 15 }
-  enum brand: { Jordan:0, Adidas: 1, Supreme: 2, FEAR_OF_GOD: 3}
+  enum brand: { Jordan: 0, Adidas: 1, Supreme: 2, FEAR_OF_GOD: 3 }
 
   # Scope for searching
-  scope :search_by_title, -> (title) { where('title ILIKE?', "%#{title}%") }
-  scope :search_by_size, -> (size) { Listing.where(size: size) }
-  scope :apparel_unsold, -> { where(category: 0, sold: 0)}
-  scope :sneaker_unsold, -> { where(category: 1, sold: 0)}
+  scope :search_by_title, ->(title) { where('title ILIKE?', "%#{title}%") }
+  scope :search_by_size, ->(size) { Listing.where(size: size) }
+  scope :apparel_unsold, -> { where(category: 0, sold: 0) }
+  scope :sneaker_unsold, -> { where(category: 1, sold: 0) }
   # Validations
   # As options are from javascript, they are perdefined and will be present or not only
   validates :title, presence: true
@@ -33,6 +33,6 @@ class Listing < ApplicationRecord
   end
 
   def stripe_price
-    self.price.to_i * 100
+    price.to_i * 100
   end
 end
