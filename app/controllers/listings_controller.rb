@@ -40,6 +40,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user = current_user
+    @listing.price = @listing.price.to_i
     if @listing.save
       ListingMailer.send_listing_mail(current_user, @listing).deliver
       redirect_to account_path, success: 'Product successfully listed!'
@@ -52,6 +53,7 @@ class ListingsController < ApplicationController
   def edit; end
 
   def update
+    @listing.price = @listing.price.to_i
     if @listing.update(listing_params)
       redirect_to account_path, success: 'Product edited!'
     else
