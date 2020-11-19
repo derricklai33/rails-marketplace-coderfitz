@@ -1,4 +1,5 @@
 module UsersHelper
+  # Defaults profile image for users that did not upload a photo as profile picture
   def image_for(user)
      if user.profile_picture.present? 
       user.profile_picture 

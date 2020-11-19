@@ -4,6 +4,9 @@ const sneaker = document.querySelector(".sneaker-div");
 import { apparelDiv } from './apparelDiv.js'
 import { sneakerDiv } from './sneakerDiv.js'
 
+// Implemented javascript function for responsive radio button to fill up new listing form.
+// Using addEventListener to display hardcoded values for title, size and brand
+// Feature implemented with Harrion's help
 var count = 0;
 
 function setOne(){

@@ -1,4 +1,5 @@
 class ListingMailer < ApplicationMailer
+  # Mailer to send user that created a new listing an email
   def send_listing_mail(user, listing)
     @user = user
     @listing = listing

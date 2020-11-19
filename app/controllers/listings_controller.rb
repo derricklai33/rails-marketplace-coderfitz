@@ -26,6 +26,7 @@ class ListingsController < ApplicationController
       @session_id = session.id
     end
 
+    # Using mapbox and leaftlet to display map on listing's show page
     @venue = @listing.location
     if params[:type] == 'json'
       render json: { data: [@venue.latitude, @venue.longitude], center: [@venue.latitude, @venue.longitude] }
@@ -42,6 +43,7 @@ class ListingsController < ApplicationController
     @listing.user = current_user
     @listing.price = @listing.price.to_i
     if @listing.save
+      # Listing mailer for when user creates a listing
       ListingMailer.send_listing_mail(current_user, @listing).deliver
       redirect_to account_path, success: 'Product successfully listed!'
     else

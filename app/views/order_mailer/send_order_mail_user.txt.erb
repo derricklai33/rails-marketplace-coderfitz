@@ -4,3 +4,4 @@ Product: <%= @order.listings.title %>!
 Price: <%= number_to_currency(@order.listings.price) %>!
 Size: <%=  @order.listings.size %>!
 Category: <%=  @order.listings.category %>!
+Bought by: <%= @order.user.full_name %>

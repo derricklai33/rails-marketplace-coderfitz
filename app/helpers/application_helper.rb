@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # flash error helper 
   def flash_class_for(alert_level)
     case alert_level
       when 'notice' then 'alert alert-info'

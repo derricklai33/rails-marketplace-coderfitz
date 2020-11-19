@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # added flash types :error and :success for more flash message options
   add_flash_types :error, :success
 
   protected
