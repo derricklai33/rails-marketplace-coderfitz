@@ -18,6 +18,8 @@ Account 2 <br>
 email:test-user@test.com <br>
 password: qwe123
 
+For stripe payment credit card number: `4242 4242 4242 4242" for a test card
+
 ### **Identification of the problem you are trying to solve by building this particular marketplace app.**
 There are a large population of people in Australia that are passionate in the streetwear section of fashion. Numerous amount of people buy and sell streetwear sneaker and apparels everyday. A lot of these transactions are done through Facebook groups, through posts after posts with the product that they wish to buy and sell. A lot of these Facebook posts usually gets filtered out by other general Facebook posts that the users have on their platform and a lot of these posts tends to get unnoticed by another buyer or seller that has genuine interest on these products. The chances of spotting the post, and then proceeding to purchase or sell a product has been fairly difficult to manage on a Facebook group.
 
@@ -42,8 +44,15 @@ The purpose of this application is to allow streetwear enthusiasts the ability t
 Through the creation of an account on the application, it provides the user the ability to make a new listing, of their desired products at their own price. Users can also provide multiple images and the location of the seller to further promote their product. The application also builds a profile automatically based on the number of listings that are  currently active and number of listings that they have sold, to show credibility of the seller. Also, users are able to purchase products after creating an account, with the ability to check their purchased orders in the application.
 
 - **Sitemap** <br>
+![sitemap](docs/Sitemap.jpg)
 
 - **Screenshots** <br>
+![landing-page](docs/landing-page.jpg)
+![shoe-page](docs/shoe-page.jpg)
+![apparel-page](docs/apparel-page.jpg)
+![show-product-page](docs/show-product-page.jpg)
+![account-page](docs/account-page.jpg)
+![new-listing-page](docs/new-listing-page.jpg)
 
 - **Target audience** <br>
 The target audience for this application are people that are streetwear enthusiasts, which wishes to purchase or sell streetwear products, without the use of platforms such as Facebook groups or consignment stores. 
@@ -92,6 +101,14 @@ The target audience for this application are people that are streetwear enthusia
 
 ### **Wireframes for your app**
 
+![landing-page-wireframe](docs/landing-page-wireframe.jpg)
+![login-page-wireframe](docs/login-page-wireframe.jpg)
+![create-account-wireframe](docs/create-account-wireframe.jpg)
+![product-page-wireframe](docs/product-page-wireframe.jpg)
+![specific-product-page-wireframe](docs/specific-product-page-wireframe.jpg)
+![account-page-wireframe](docs/account-page-wireframe.jpg)
+![new-listing-page-wireframe](docs/new-listing-page-wireframe.jpg)
+
 ### **An ERD for your app**
 Refer to R19
 
@@ -113,7 +130,7 @@ The 'abstraction' in Rails refers to abstraction via inheritance where in Rails,
   Leaflet, Mapbox and Geocoding was implemented to allow users to input location of listings, which is then converted to longitude and latitude coordinates which will precisely locate the position in a displayed map on the product page.  
   - **Stripe and Ultrahook** <br>
   Stripe and Ultrahook was implemented as the payment system and checking if the payment is valid using webhooks. Stripe payments allows a user to be redirected to the payment page, where they are able key in their credit card details and info, which are then sent through a post request to a webhook to verify the payment. 
-  - **SendGrid**
+  - **SendGrid** <br>
   SendGrid was used in conjunction with Rails ActionMailer to automate the process of sending an email based on certain actions that are made in the application. An email is automatically sent to the email of the user upon making a listing, selling a listing and making a purchase.
 
 ### **Describe your projects models in terms of the relationships (active record associations) they have with each other**
