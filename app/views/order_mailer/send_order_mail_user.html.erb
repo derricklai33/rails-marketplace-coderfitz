@@ -10,5 +10,6 @@
     <p>Price: <%= number_to_currency(@order.listing.price) %>!</p>
     <p>Size: <%=  @order.listing.size %>!</p>
     <p>Category: <%=  @order.listing.category %>!</p>
+    <p>Bought by: <%= @order.user.full_name %></p>
   </body>
 </html>
