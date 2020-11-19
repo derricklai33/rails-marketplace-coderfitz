@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :apparels, only: [:index]
   resources :listings
   get "/account", to: 'account#index', as: 'account' 
-  get "payments/success", to: "payments#success"
   get "users/:id", to: "users#show", as: 'user'
+  get "payments/success", to: "payments#success"
+  get "payments/cancel", to: "payments#cancel"
+  post 'payments/webhook', to:'payments#webhook'
 end

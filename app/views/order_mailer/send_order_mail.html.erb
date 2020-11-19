@@ -7,7 +7,7 @@
     <h1>Thanks for the purchase, <%= @user.full_name %>!</h1>
     <h2>Order details:</h2>
     <p>Product: <%= @order.listing.title %>!</p>
-    <p>Price: <%= @order.listing.price %>!</p>
+    <p>Price: <%= number_to_currency(@order.listing.price) %>!</p>
     <p>Size: <%=  @order.listing.size %>!</p>
     <p>Category: <%=  @order.listing.category %>!</p>
   </body>
